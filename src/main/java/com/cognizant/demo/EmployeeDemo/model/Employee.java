@@ -20,8 +20,19 @@ public class Employee {
     private String zip;
     @Column(name = "HiredDate")
     private Date hireDate;
+    
+    @Column(name="JobTitle")
+    private String jobTitle;
 
-    public Long getEmpID() {
+    public String getJobTitle() {
+		return jobTitle;
+	}
+
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+
+	public Long getEmpID() {
         return empID;
     }
 

@@ -1,4 +1,4 @@
-package com.cognizant.demo.EmployeeDemo;
+package com.cognizant.demo.EmployeeDemo.controller;
 
 import com.cognizant.demo.EmployeeDemo.model.Employee;
 import com.cognizant.demo.EmployeeDemo.service.EmployeeService;
