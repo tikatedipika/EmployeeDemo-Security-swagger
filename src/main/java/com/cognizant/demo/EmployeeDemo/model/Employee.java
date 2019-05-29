@@ -1,27 +1,46 @@
 package com.cognizant.demo.EmployeeDemo.model;
 
 import javax.persistence.*;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
 @Entity
+@ApiModel(value = "Details about the  Employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "database generated employee id")
     private Long empID;
+    
     @Column(name = "Name")
+    @ApiModelProperty(notes = "Employee Name")
     private String name;
+    
     @Column(name = "Address")
+    @ApiModelProperty(notes = "Employee Address")
     private String address;
+    
     @Column(name="City")
+    @ApiModelProperty(notes = "Employee address city")
     private String city;
+    
     @Column(name = "State")
+    @ApiModelProperty(notes = "Employee address state")
     private String state;
+    
     @Column(name = "Zip")
+    @ApiModelProperty(notes = "Employee address zip")
     private String zip;
+    
     @Column(name = "HiredDate")
+    @ApiModelProperty(notes = "Employee hired date")
     private Date hireDate;
     
     @Column(name="JobTitle")
+    @ApiModelProperty(notes = "Employee job title")
     private String jobTitle;
 
     public String getJobTitle() {

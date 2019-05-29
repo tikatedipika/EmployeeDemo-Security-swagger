@@ -8,6 +8,7 @@
 		<version>2.1.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	
 	<groupId>com.cognizant.demo</groupId>
 	<artifactId>EmployeeDemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -16,6 +17,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<project.build.finalName>EmployeeDemo</project.build.finalName>
 	</properties>
 
 	<dependencies>
@@ -46,9 +48,26 @@
 		</dependency>
 		
 		<dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-devtools</artifactId>
-    </dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-devtools</artifactId>
+	   	</dependency>
+	   	
+	   	<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+		 <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-bean-validators</artifactId>
+            <version>2.8.0</version>
+        </dependency>
 
 	</dependencies>
 
@@ -57,6 +76,32 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+    			<artifactId>docker-maven-plugin</artifactId>
+   			 	<version>1.2.0</version>
+				<configuration>
+					<imageName>employeedemo</imageName>
+					<dockerDirectory>.</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default</id>
+						<phase>install</phase>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
