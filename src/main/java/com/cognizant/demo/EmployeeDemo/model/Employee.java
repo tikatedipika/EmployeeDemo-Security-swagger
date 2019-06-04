@@ -5,7 +5,7 @@ import javax.persistence.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @ApiModel(value = "Details about the  Employee")
@@ -34,11 +34,23 @@ public class Employee {
     @Column(name = "Zip")
     @ApiModelProperty(notes = "Employee address zip")
     private String zip;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Column(name = "PhoneNumber")
+    @ApiModelProperty(notes = "Employee address zip")
+    private String phoneNumber;
     
     @Column(name = "HiredDate")
     @ApiModelProperty(notes = "Employee hired date")
     private Date hireDate;
-    
+
     @Column(name="JobTitle")
     @ApiModelProperty(notes = "Employee job title")
     private String jobTitle;
@@ -105,5 +117,19 @@ public class Employee {
 
     public void setHireDate(Date hireDate) {
         this.hireDate = hireDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+            "empID=" + empID +
+            ", name='" + name + '\'' +
+            ", address='" + address + '\'' +
+            ", city='" + city + '\'' +
+            ", state='" + state + '\'' +
+            ", zip='" + zip + '\'' +
+            ", hireDate=" + hireDate +
+            ", jobTitle='" + jobTitle + '\'' +
+            '}';
     }
 }
