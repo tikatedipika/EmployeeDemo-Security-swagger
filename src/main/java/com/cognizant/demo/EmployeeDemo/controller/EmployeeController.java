@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
-@CrossOrigin(origins = "http://18.222.213.31:80")
+//@CrossOrigin(origins = "http://18.222.213.31:80")
 @Api(value = "Employee Management system")
 public class EmployeeController {
 
