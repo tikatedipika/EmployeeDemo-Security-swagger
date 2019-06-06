@@ -12,6 +12,4 @@ services:
         ports:
             - 3306:3306
         volumes:
-            - dockerAngularSpringDatabaseData:/var/lib/mysql
-        networks:
-            - backendNetwork
+            - /var/lib/mysql
