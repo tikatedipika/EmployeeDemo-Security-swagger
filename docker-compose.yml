@@ -1,18 +1,18 @@
 version: '3'
 
 services:
-    my_database:
+    database:
         image: mysql
-        container_name: my_mysql_database
+        container_name: database
         environment:
             MYSQL_ROOT_PASSWORD: password
-            MYSQL_DATABASE: emp-mysql
+            MYSQL_DATABASE: employee_db
             MYSQL_USER: root
             MYSQL_PASSWORD: password
         ports:
             - 3306:3306
         volumes:
-            - emp-mysql:/var/lib/mysql
+            - employee_db:/var/lib/mysql
         networks:
             - backendNetwork
     employee_backend:
@@ -21,14 +21,14 @@ services:
         ports:
             - 8000:8080
         depends_on:
-            - my_database
+            - database
         volumes:
             - ./target/EmployeeDemo-0.0.1-SNAPSHOT.jar:/app.jar
         command: ["java", "-jar", "app.jar"]
         networks:
             - backendNetwork
 volumes:
-    emp-mysql:
+    employee_db:
 
 networks:
     backendNetwork:
