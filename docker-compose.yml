@@ -1,15 +1,35 @@
 version: '3'
 
 services:
-    database:
+    my_database:
         image: mysql
-        container_name: database
+        container_name: my_mysql_database
         environment:
             MYSQL_ROOT_PASSWORD: password
-            MYSQL_DATABASE: dockerAngularSpringDatabase
+            MYSQL_DATABASE: emp-mysql
             MYSQL_USER: root
             MYSQL_PASSWORD: password
         ports:
             - 3306:3306
         volumes:
-            - /var/lib/mysql
+            - emp-mysql:/var/lib/mysql
+        networks:
+            - backendNetwork
+    employee_backend:
+        image: openjdk:8-jdk-alpine
+        container_name: employee_backend_app
+        ports:
+            - 8000:8080
+        depends_on:
+            - my_database
+        volumes:
+            - ./target/EmployeeDemo-0.0.1-SNAPSHOT.jar:/app.jar
+        command: ["java", "-jar", "app.jar"]
+        networks:
+            - backendNetwork
+volumes:
+    emp-mysql:
+
+networks:
+    backendNetwork:
+    frontendNetwork:
