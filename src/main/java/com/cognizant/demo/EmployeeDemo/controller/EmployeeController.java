@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
+//@CrossOrigin(origins = "http://18.222.213.31:80")
 @Api(value = "Employee Management system")
 public class EmployeeController {
 
@@ -47,7 +48,8 @@ public class EmployeeController {
     @PostMapping(value = "/add", produces = "application/json")
     @ResponseBody
     public void addEmployee(@ApiParam(value = "Employee object need to store in database",required = true)@RequestBody Employee employee){
-         employeeService.addEmployee(employee);
+        System.out.println(" --employee" +employee);
+        employeeService.addEmployee(employee);
     }
     
     @ApiOperation(value = "Delete an employee")

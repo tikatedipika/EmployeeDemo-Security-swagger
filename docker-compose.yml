@@ -1,3 +1,4 @@
+
 version: "3"
 services:
   employee-container:
@@ -29,3 +30,39 @@ services:
 networks:
   employeedemo-mysql:
   
+=======
+version: '3'
+
+services:
+    database:
+        image: mysql
+        container_name: database
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: employee_db
+            MYSQL_USER: root
+            MYSQL_PASSWORD: password
+        ports:
+            - 3306:3306
+        volumes:
+            - employee_db:/var/lib/mysql
+        networks:
+            - backendNetwork
+    employee_backend:
+        image: openjdk:8-jdk-alpine
+        container_name: employee_backend_app
+        ports:
+            - 8000:8080
+        depends_on:
+            - database
+        volumes:
+            - ./target/EmployeeDemo-0.0.1-SNAPSHOT.jar:/app.jar
+        command: ["java", "-jar", "app.jar"]
+        networks:
+            - backendNetwork
+volumes:
+    employee_db:
+
+networks:
+    backendNetwork:
+    frontendNetwork:
