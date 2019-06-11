@@ -3,8 +3,6 @@ package com.cognizant.demo.EmployeeDemo.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.google.common.base.Predicate;
-
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;

@@ -1,0 +1,5 @@
+name: EmployeeDemo_ResourceServer
+path: target\EmployeeDemo-0.0.1-SNAPSHOT.jar
+memory: 900M
+services:
+  - mysqldb

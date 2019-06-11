@@ -1,0 +1,15 @@
+spring:
+    profiles: container
+    jpa:
+        database: MYSQL
+        hibernate:
+            ddl-auto: validate
+        generate-ddl: true
+        database-platform:
+            org.hibernate.dialect.MySQL57Dialect
+
+    datasource:
+        url: jdbc:mysql://emp-mysql:3306/employee_db
+        username: root
+        password: password
+        driver-class-name: com.mysql.cj.jdbc.Driver
